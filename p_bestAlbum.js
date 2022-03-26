@@ -12,7 +12,7 @@ function solution(genres, plays) {
   genres
     .map((genre, index) => [genre, plays[index]]) // 장르와 인덱스를 묶어서, [장르, 재생횟수]형태의 배열로 만들기
     .forEach(([genre, play], index) => {
-      const data = genreMap.get(genre) || { total: 0, songs: [] }; // 첫번째 값이 없는 경우 고려
+      const data = genreMap.get(genre) || { total: 0, songs: [] }; // [예외처리]첫번째 값이 없는 경우 고려
       genreMap.set(genre, {
         total: data.total + play, // 재생 횟수
         songs: [...data.songs, { play, index }]
