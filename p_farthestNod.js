@@ -1,7 +1,8 @@
 //// [실습문제] 가장 먼 노드 ////
-// 핵심 키워드 = 노드, 간선, 최단경로
+// 핵심 키워드 = 노드, 간선, 최단경로 ->뒷구르기 하면서 봐도 그래프 문제!
 // 최단 경로가 제일 큰 경우의 집합을 구하는 문제
 
+// BFS 구현 위한 큐 생성
 class Queue {
   constructor() {
     this.queue = [];
@@ -26,32 +27,39 @@ class Queue {
 }
 
 function soluton(n, edge) {
-  const graph = Array.from(Array(n + 1), () => []); // 1번부터 index시작, 초기 값으로 빈 배열 생성
+  // 인접 리스트 이용
+  // 1번부터 index시작, 초기 값으로 빈 배열 생성
+  const graph = Array.from(Array(n + 1), () => []);
 
   for (const [src, dest] of edge) {
     graph[src].push(dest);
     graph[dest].push(src); // 양방향 구현
-  }
+  } // 그래프 완성!
 
   const distance = Array(n + 1).fill(0); // 각 정점의 거리를 기록하기 위한 배열 생성, 0으로 초기화
   distance[1] = 1; // 첫 정점의 길이 1로 설정
 
-  // BFS로직-너비우선탐색(가까이 있는 것부터 순차적으로 탐색)
+  // BFS로직-너비우선 탐색(가까이 있는 것부터 순차적으로 탐색)
   const queue = new Queue();
   queue.enqueue(1);
-  //const queue = [1]; // BFS는 큐를 이용해서 구현 가능
   while (!queue.isEmpty()) {
     const src = queue.dequeue();
-    //const src = queue.shift(); //shift는 O(n)이지만 요소가 적은 경우에는 JS엔진에서 최적화해준다.
+    // for of: 출발지에서 목적지까지의 요소들 뽑아준다.
     for (const dest of graph[src]) {
+      // 한번도 가지 않은 경로는 0으로 초기화 되어있을 것이고
       if (distance[dest] === 0) {
+        // 그 경로는 추가해준다.
         queue.enqueue(dest);
+        // 도착지=출발지+1
         distance[dest] = distance[src] + 1;
       }
     }
   }
+  console.log(distance);
 
+  // 거리 중 최댓값
   const max = Math.max(...distance);
+  // 최댓값 중 같은 값이 몇개나 있는지 필터링
   return distance.filter((item) => item === max).length;
 }
 
@@ -71,7 +79,7 @@ function soluton(n, edge) {
 //     visited[1] = true;
 
 //     while (queue.length !== 0) {
-//       now = queue.shift();
+//       now = queue.shift(); //shift는 O(n)이지만 요소가 적은 경우에는 JS엔진에서 최적화해준다.
 //       graph[now].forEach((i) => {
 //         if (!visited[i]) {
 //           distance[i] = distance[now] + 1;
