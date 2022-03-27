@@ -4,7 +4,7 @@
 class Node {
   constructor(value = "") {
     this.value = value;
-    this.childern = new Map();
+    this.children = new Map();
   }
 }
 
@@ -21,8 +21,8 @@ class Trie {
     // 문자열을 하나씩 자르며 순회
     for (const char of string) {
       // 간선에 없다면 새롭게 추가
-      if (!curNode.childern.has(char)) {
-        curNode.childern.set(char, new Node(curNode.value + char));
+      if (!curNode.children.has(char)) {
+        curNode.children.set(char, new Node(curNode.value + char));
       }
       // 다음 정점으로 이동
       curNode = curNode.children.get(char);
@@ -37,7 +37,7 @@ class Trie {
       if (!curNode.children.has(char)) {
         return false;
       }
-      curNode = curNode.childern.get(char);
+      curNode = curNode.children.get(char);
     }
     return true;
   }
