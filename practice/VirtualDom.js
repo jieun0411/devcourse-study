@@ -1,4 +1,4 @@
-//// Virtual DOM Tree 구현 ////
+///// Virtual DOM Tree 구현 /////
 
 let VDOMTree = {
   tag: "div",
