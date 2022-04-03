@@ -1,4 +1,4 @@
-//// [실습문제] 가장 큰 수 ////
+///// [실습문제] 가장 큰 수 /////
 
 function solution(numbers) {
   let answer = numbers
