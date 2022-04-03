@@ -1,4 +1,4 @@
-//// Map을 이용한 해시 테이블 구현 ////
+///// Map을 이용한 해시 테이블 구현 /////
 
 const table = new Map();
 table.set("key", 100);
