@@ -1,4 +1,4 @@
-//// 최대 힙 구현 ////
+///// 최대 힙 구현 /////
 
 class MaxHeap {
   constructor() {
