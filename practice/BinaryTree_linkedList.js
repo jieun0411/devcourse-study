@@ -1,3 +1,5 @@
+//// 연결 리스트를 이용한 이진트리 구현 ////
+
 class Node {
   constructor(value) {
     this.value = value;
