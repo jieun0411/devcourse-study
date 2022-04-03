@@ -1,3 +1,5 @@
+//// 선언적 프로그래밍 방식으로 토글 버튼 만들기 ////
+
 function TimerButton({ $target, text, timer = 3000 }) {
   const button = new ToggleButton({
     $target,
