@@ -1,0 +1,26 @@
+<!-- Local Storage 테스트 해보기 -->
+
+<html>
+  <body>
+    <input type="text" id="name" />
+    <button id="save">Save</button>
+    <button id="remove">Remove</button>
+    <script>
+      const storeName = localStorage.getItem("name") || "";
+
+      if (storeName) {
+        document.querySelector("#name").value = storedName;
+      }
+
+      document.querySelector("#save").addEventListener("click", () => {
+        localStorage.setItem("name", document.querySelector("#name").value);
+      });
+
+      document.querySelector("#remove").addEventListener("click", () => {
+        localStorage.removeItem("name");
+      });
+    </script>
+  </body>
+</html>
+
+<!-- Application의 Local Storage에서 현재 도메인에 들어가면 확인할 수 있다! -->
