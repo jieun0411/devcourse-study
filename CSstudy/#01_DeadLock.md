@@ -140,5 +140,3 @@ https://velog.io/@ryalya/iOS-CS-Study-Deadlock%EB%8D%B0%EB%93%9C%EB%9D%BD-%EA%B5
 < 사진 출처 >
 https://copycode.tistory.com/78
 ```
-
-<span style='color: #2D3748; background-color: #fff5b1;'>한 번에 하나의 프로세스만</span>
