@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>fetch 실습입니당</title>
+  </head>
+  <body>
+    <script>
+      fetch("https://kdt.roto.codes/undefined-api")
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          throw new Error(
+            `저.. 요청 처리 못 했어오... Status는 ${res.status} 입니닷`
+          );
+        })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((e) => {
+          document.querySelector("body").innerHTML = e.message;
+        });
+    </script>
+  </body>
+</html>
