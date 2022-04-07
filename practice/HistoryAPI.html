@@ -1,0 +1,38 @@
+<html>
+  <body>
+    <div id="container"></div>
+    <a class="LinkItem" href="/product-list">product list</a>
+    <a class="LinkItem" href="/article-list">article list</a>
+    <script>
+      // point 1. location을 받아 어떤 걸 그릴지 정하는 route 로직
+      function route() {
+        const { pathname } = location;
+        const $container = document.querySelector("#container");
+        if (pathname === "/") {
+          $container.innerHTML = "<h1>Home!!!</h1>";
+        } else if (pathname === "/product-list") {
+          $container.innerHTML = "<h1>상품 목록!!!</h1>";
+        } else if (pathname === "/article-list") {
+          $container.innerHTML = "<h1>게시글 목록!!!</h1>";
+        }
+      }
+      route();
+
+      window.addEventListener("click", (e) => {
+        if (e.target.className === "LinkItem") {
+          e.preventDefault(); // a태그 링크를 클릭해도, href링크로 이동하지 않게 합니다
+
+          const { href } = e.target;
+          const path = href.replace(window.location.origin, ""); // 앞의 127.0.0.1~~을 날려버립니당
+
+          // point 2. 실제 화면 이동이 아니지만, pushstate로 이동시킬 이벤트
+          history.pushState(null, null, path);
+          route();
+        }
+      });
+
+      // point 3. 앞/뒤로 가기 했을 때의 popstate 이벤트를 핸들링해서 route 이벤트 호출
+      windos.addEventListener("popstate", () => route()); // popstate: 뒤로가기, 앞으로가기 할 때만 호출됨!
+    </script>
+  </body>
+</html>
