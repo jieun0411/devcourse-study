@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ msg }}</h1>
+    </div>
+    <script>
+      /*
+      // 뷰 애플리케이션
+      const app = Vue.createApp({
+        data() {
+          return {
+            msg: "Hello Vue!",
+          };
+        },
+      });
+
+      // 인스턴스 객체
+      const viewModel = app.mount("#app");
+      viewModel.msg = "Good!"; // 새로운 데이터 할당
+      */
+
+      const App = {
+        data() {
+          return {
+            msg: "Hello Vue!",
+          };
+        },
+      };
+
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

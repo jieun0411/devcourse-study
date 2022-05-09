@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ user.name }}</h1>
+      <h2>{{ user.age }}</h2>
+      <h2>{{ doubleAge }}</h2>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            user: {
+              name: "Leon",
+              age: 22,
+              email: "leon@abc.com",
+            },
+          };
+        },
+        computed: {
+          doubleAge() {
+            console.log("Double!!");
+            return this.user.age * 2;
+          },
+        },
+      };
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

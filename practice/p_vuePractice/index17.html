@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ fullName }}</h1>
+      <h1>{{ firstName }}</h1>
+      <h1>{{ lastName }}</h1>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            firstName: "Leon",
+            lastName: "Miller",
+          };
+        },
+        computed: {
+          fullName: {
+            get() {
+              return `${this.firstName} ${this.lastName}`;
+            },
+            set(newValue) {
+              console.log(newValue); // 'Jacob kevin Smith'
+              const names = newValue.split(" "); // ['Jacob', 'Kevin', 'Smith']
+              this.firstName = names[0];
+              this.lastName = names[names.length - 1];
+            },
+          },
+        },
+        watch: {
+          // 감시하고 있는 데이터가 변경되면 함수 실행
+          firstName(newValue, oldValue) {
+            console.log("watch:", newValue, oldValue);
+          },
+          fullName() {
+            console.log("watch:", this.fullName);
+          },
+        },
+      };
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
