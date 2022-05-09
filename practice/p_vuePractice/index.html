@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">{{ counter }}</div>
+    <script>
+      const App = {
+        data() {
+          return {
+            counter: 0,
+          };
+        },
+        mounted() {
+          // setInterval의 함수는 화살표 함수로 정의해야 합니다.
+          // 일반 함수에서의 this는 함수가 '실행(호출)'되는 위치에서 정의됩니다.
+          // 화살표 함수에서의 this는 함수가 '선언'되는 위치에서 정의됩니다.
+          // 따라서 this를 통해 counter라는 반응형 데이터에 접근하여 데이터를 사용해야 합니다.
+          setInterval(() => {
+            this.counter += 1;
+          }, 1000);
+        },
+      };
+
+      const app = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
